@@ -40,7 +40,7 @@ public:
         for(auto i:adjList){
             //i is pair (node ,list of nodes)
             T node = i.first;
-            if(!visited){
+            if(!visited[node]){
                 dfsHelper(node,visited,ordering);
             }
             
