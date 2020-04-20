@@ -2,8 +2,9 @@
  * APPROACH1:naive recursive brute force{complexity : time->O(2^n)}
  * APPROACH2:bottom up tabulation {Time Complexity: O(nW) }
  * APPROACH3:top down memoisation
- * APPROACH4: space optimised
- * APPROACH5:meet in the middle(to be implemented) 
+ * APPROACH4: space optimised in 2d array
+ * APPROACH5: space optimised in 1d array
+ * APPROACH6:meet in the middle(to be implemented) 
  */
  
 #include <bits/stdc++.h>
@@ -147,6 +148,28 @@ int KnapSack_spaceopt(int val[], int wt[], int n, int W)
   
     // Return mat[0][W] if n is odd, else mat[1][W] 
     return (n%2 != 0)? mat[0][W] : mat[1][W]; 
+} 
+
+
+//more space optimes 1d array
+int KnapSack_1d(int val[], int wt[], int n, int W) 
+{ 
+    // array to store final result 
+    //dp[i] stores the profit with KnapSack capacity "i" 
+    int dp[W+1]; 
+      
+    //initially profit with 0 to W KnapSack capacity is 0 
+    memset(dp, 0, sizeof(dp)); 
+  
+    // iterate through all items 
+    for(int i=0; i < n; i++)  
+        //traverse dp array from right to left 
+        for(int j=W; j>=wt[i]; j--) 
+            dp[j] = max(dp[j] , val[i] + dp[j-wt[i]]); 
+    /*above line finds out maximum of  dp[j](excluding ith element value) 
+      and val[i] + dp[j-wt[i]] (including ith element value and the 
+      profit with "KnapSack capacity - ith element weight") */    
+    return dp[W]; 
 } 
   
   //meet in the middle to be also implemented
