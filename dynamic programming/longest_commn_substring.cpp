@@ -9,7 +9,7 @@ longest common substring */
     Keep only the last and current row of the DP table to save memory ( O ( min ( r , n ) ) {\displaystyle O(\min(r,n))} {\displaystyle O(\min(r,n))} instead of O ( n r ) {\displaystyle O(nr)} {\displaystyle O(nr)})
     Store only non-zero values in the rows. This can be done using hash tables instead of arrays. This is useful for large alphabets.
     
- * APPROACH5:using suffix tree {O(n + m) time complexity}  : https://www.geeksforgeeks.org/suffix-tree-application-5-longest-common-substring-2/
+ * APPROACH5:using suffix tree {O(n) time complexity}  : https://www.geeksforgeeks.org/suffix-tree-application-5-longest-common-substring-2/
  */
 #include <bits/stdc++.h>
 
