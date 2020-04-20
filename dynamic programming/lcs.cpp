@@ -6,7 +6,7 @@
  * ap[roach4:space optimised bottom up(O(n))
  * more info:https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
  * https://www.ics.uci.edu/~eppstein/161/960229.html
- * 
+ * https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_subsequence#Reading_out_all_LCSs
  * 
  * 
  * 
