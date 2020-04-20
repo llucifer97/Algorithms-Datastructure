@@ -144,3 +144,9 @@ int main()
 		cout << "\n";
 	return 0; 
 } 
+
+
+//related question
+// https://www.geeksforgeeks.org/length-of-longest-palindromic-subsequence-of-even-length-with-no-two-adjacent-characters-same/?ref=rp
+
+
