@@ -189,3 +189,8 @@ int main()
    //cout<< lcs_memoization(s1,s2,m,n,dp);
   return 0;
 }
+
+
+//related question
+//https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/?ref=rp
+// https://www.geeksforgeeks.org/printing-longest-common-subsequence-set-2-printing/?ref=rp
