@@ -1,4 +1,7 @@
-/*https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+/*https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10
+ *https://www.geeksforgeeks.org/knapsack-with-large-weights/?ref=rp : Knapsack with large Weights
+ *https://www.geeksforgeeks.org/double-knapsack-dynamic-programming/?ref=rp  : double knapsack
+ *https://www.geeksforgeeks.org/0-1-knapsack-using-branch-and-bound/?ref=rp  :branch and bound
  * APPROACH1:naive recursive brute force{complexity : time->O(2^n)}
  * APPROACH2:bottom up tabulation {Time Complexity: O(nW) }
  * APPROACH3:top down memoisation
