@@ -47,4 +47,13 @@ int main(void)
  * https://hackernoon.com/binary-search-in-detail-914944a1434a
  * https://www.topcoder.com/community/competitive-programming/tutorials/binary-search
  * https://codeforces.com/blog/entry/50041?
+ * https://www.geeksforgeeks.org/variants-of-binary-search/?ref=rp
+ * https://www.geeksforgeeks.org/meta-binary-search-one-sided-binary-search/?ref=rp
+ * https://www.geeksforgeeks.org/binary-search-using-pthread/?ref=rp
+ * https://www.geeksforgeeks.org/uniform-binary-search/?ref=rp
+ * https://www.geeksforgeeks.org/the-ubiquitous-binary-search-set-1/?ref=rp
+ * https://www.geeksforgeeks.org/ternary-search/
+ * https://www.geeksforgeeks.org/exponential-search/
+ * https://www.geeksforgeeks.org/find-the-point-where-a-function-becomes-negative/
  */ 
+
