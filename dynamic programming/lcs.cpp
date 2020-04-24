@@ -194,3 +194,4 @@ int main()
 //related question
 //https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/?ref=rp
 // https://www.geeksforgeeks.org/printing-longest-common-subsequence-set-2-printing/?ref=rp
+//https://www.geeksforgeeks.org/shortest-common-supersequence/
