@@ -11,7 +11,7 @@ Repository for solving the right questions and not grinding over redundant one
 7. PATTERN MATCHING<br>
 8. RANDOMISED ALGORITHM<br>
 9. sORTING/SEARCHING
-
+10. HASHTABLE
 ## Dynamic Programming Pattern
 * [Recursion]() 
   - [Bell Numbers](https://www.geeksforgeeks.org/bell-numbers-number-of-ways-to-partition-a-set/) 
@@ -165,8 +165,22 @@ Place one has the fun times of linking here, but I can also link back [here](#TO
 * [Merge K sorted array](https://www.geeksforgeeks.org/merge-k-sorted-arrays-set-3-using-divide-and-conquer-approach/?ref=rp)
 * [Divide and Conquer DP](https://cp-algorithms.com/dynamic_programming/divide-and-conquer-dp.html)
 
-## BACKTRACKING
--[]()
+## HASHTABLE
+-[2 SUM]()
+-[3 SUM]()
+-[4 SUM]()
+-[Contiguous Array]()
+-[contiguous_integers]()
+-[count-subarrays-equal-number]()
+-[largest_subarray]()
+-[LIS]()
+-[longest_consecutive_subsequence]()
+-[Longest_subarray_ sum_divisible _k]()
+-[Maximum_length_subsequence]()
+-[max_subarray_k_elements]()
+-[pair_sum_divisible_k]()
+-[ pairs whose sum is divisible by k]()
+
 
 
 
