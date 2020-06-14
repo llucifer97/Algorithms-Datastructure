@@ -2,6 +2,7 @@
 Repository for solving the right questions and not grinding over redundant one
 
 # TOPICS:
+## ALGORITHMS
 1. DYNAMIC PROGRAMMING <br>
 2. BACKTRACKING <br>
 3. DIVIDE AND CONQUERE<br>
@@ -10,8 +11,10 @@ Repository for solving the right questions and not grinding over redundant one
 6. BRANCH AND BOUND<br>
 7. PATTERN MATCHING<br>
 8. RANDOMISED ALGORITHM<br>
-9. sORTING/SEARCHING
-10. HASHTABLE
+9. SORTING & SEARCHING
+## DATASTRUCTURE
+1. TREES
+2. LINKED LIST
 ## Dynamic Programming Pattern
 * [Recursion]() 
   - [Bell Numbers](https://www.geeksforgeeks.org/bell-numbers-number-of-ways-to-partition-a-set/) 
@@ -164,6 +167,25 @@ Place one has the fun times of linking here, but I can also link back [here](#TO
 * [Iterative Tower of Hanoi](https://www.geeksforgeeks.org/iterative-tower-of-hanoi/)
 * [Merge K sorted array](https://www.geeksforgeeks.org/merge-k-sorted-arrays-set-3-using-divide-and-conquer-approach/?ref=rp)
 * [Divide and Conquer DP](https://cp-algorithms.com/dynamic_programming/divide-and-conquer-dp.html)
+
+
+## BINARY TREES
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+
+
+
+
 
 ## HASHTABLE
 - [2 SUM]()
