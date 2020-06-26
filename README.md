@@ -111,7 +111,7 @@ Repository for solving the right questions and not grinding over redundant one
   - [Palindrome Partitioning](https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/) 
   - [Minimum Cost Polygon Triangulation](https://www.geeksforgeeks.org/minimum-cost-polygon-triangulation/)
   - [optimal binary search tree](https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/)
-  - []()
+  - [minimum maximum values expression](https://www.geeksforgeeks.org/minimum-maximum-values-expression/)
   - []()
 * [DP on grids]() 
   - [Gold Mine Problem](https://www.geeksforgeeks.org/gold-mine-problem/) 
