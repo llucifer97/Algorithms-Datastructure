@@ -15,6 +15,7 @@ Repository for solving the right questions and not grinding over redundant one
 ## DATASTRUCTURE
 1. TREES
 2. LINKED LIST
+3. STACK
 ## Dynamic Programming Pattern
 * [Recursion]() 
   - [Bell Numbers](https://www.geeksforgeeks.org/bell-numbers-number-of-ways-to-partition-a-set/) 
