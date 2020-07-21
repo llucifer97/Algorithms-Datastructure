@@ -122,7 +122,8 @@ int query(int *tree,int ss,int se,int qs,int qe,int index){
 
 }
 
-void updateNode(int *tree,int ss,int se,int i,int increment,int index){
+void updateNode(int *tree,int ss,int se,int i,int increment,int index){  // here is starting index of tree
+
 
     //case where the I isout of bounds
     if(i> se || i < ss){
