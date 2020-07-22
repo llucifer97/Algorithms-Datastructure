@@ -4,6 +4,21 @@ using namespace std;
 
 
 
+int buildTree(int *arr,int *st, int ss, int se, int si) 
+{ 
+	if (ss == se) 
+	{ 
+		st[si] = arr[ss]; 
+		return arr[ss]; 
+	} 
+
+	int mid = (ss + se)/2;
+	st[si] = buildTree(arr,st, ss, mid, si*2+1) + 
+			buildTree(arr,st, mid+1, se, si*2+2); 
+	return st[si]; 
+} 
+
+
 int getSum(int *st, int ss,int se,int qs, int qe,int si) 
 { 
 	// Check for erroneous input values 
@@ -26,19 +41,6 @@ int getSum(int *st, int ss,int se,int qs, int qe,int si)
 
 
 
-int buildTree(int *arr,int *st, int ss, int se, int si) 
-{ 
-	if (ss == se) 
-	{ 
-		st[si] = arr[ss]; 
-		return arr[ss]; 
-	} 
-
-	int mid = (ss + se)/2;
-	st[si] = buildTree(arr,st, ss, mid, si*2+1) + 
-			buildTree(arr,st, mid+1, se, si*2+2); 
-	return st[si]; 
-} 
 
 
 void updateValueUtil(int *st, int ss, int se, int i, int diff, int si)  
