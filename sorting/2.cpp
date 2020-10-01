@@ -2,7 +2,7 @@
 
 //This algorithm is used to sort the orignal array by divide it into two equal parts and then again apply the merge sort logic to both left array as well as right array.
 //We will first find the middle point then well call merge function for left array and right array.
-//Then we wil merge the left array and right array until and unless we get the sorted array.
+//Then we wil merge the left array and right array untill and unless we get the sorted array.
 //Divide and Conquer algorithm..
 
 //Stable algorithm.....
