@@ -1,4 +1,7 @@
 ///Cycle-sort
+//This algorithm is used when the memory cost is expensive
+//In this algorithm ,we find how many elements are smaller than current element then we will place the current element at correct position..
+//We maintain a cycle between the elements.
 //Find the minimum swaps required to sort the array.............
 //Time complexity is :
 //Worst case : O(n**2)..........
