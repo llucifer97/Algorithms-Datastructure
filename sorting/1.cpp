@@ -3,6 +3,7 @@
 
 
 //Bubble Sort
+//This algorithm is used to swap two adjacent elements one by one untill and unless we get the sorted array.
 //Stable
 
 #include<bits/stdc++.h>
@@ -28,6 +29,7 @@ void bubble_sort(int *a,int n)
 
 }
 //Selection sort
+//This Algorthim is used to find the min index at every iteration and swap the current element with the minimum element.
 //Unstable
 //Time Complexity is O(n**2)...........
 
@@ -45,6 +47,7 @@ void selection_sort(int *a,int n)
     }
 }
 //Insertion sort
+//This algortith is used to place the current element at correct position and then it will place all lesser element before the current element.
 //stable........
 
 //Time Complexity is O(n**2)......
