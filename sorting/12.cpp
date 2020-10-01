@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 //Radix sort
+//This algorthim is the extended version of counting sort because the data may be is  in the range of 1 to k**2,that's why we use this algorithm insteed of using Counting sort.
+//In this algorithm we will sort the array acc.to digits.
+//We will first sort it acc to least significant digit ,then sort it acc to middle digit and finally sort it acc to  most significant digit.
+//The whole logic is similar to counting sort......
 
 //Time Complexity is Theta(d*(n+b))........
 //b is the base
