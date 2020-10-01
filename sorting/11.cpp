@@ -1,4 +1,8 @@
 //Bucket sort
+//This algorithm is used when the data is uniformaly distributed.
+//we will divide all the elements into K buckets.
+//But we have to find the maximum element in original array to get the bucket index.Once we get the Bucket index,will push the values into bucket array or vector.
+//We sort the Bucket vector then we will place the sorted elements into original array...
 //Time Complexity
 
 //Data is uniformly distributed....
