@@ -1,8 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-//Method 1
-
+//Quick sort
+//In this alorithm we find the pivot point then partitioning the array such that all elements  are smaller than pivot and all elements are greater than pivot.
+//To find the Pivot,we will consider three method.
+//1.Naive partition 
+//2.Lumotu partition
+//3.hoor's partition
+//Method1
 //Naive partition..........
 //Time Complexity is O(n).......
 //Auxiliary Space is O(n)......
