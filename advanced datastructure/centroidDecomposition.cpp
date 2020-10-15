@@ -15,7 +15,7 @@ set<int> ar[100001];
 int par[100001];
 int sub[100001];
 //--------Decompose Part-----------//
-
+// dfs to get the immediate parents of all nodes ~O(N)
 int dfs1(int node , int p)
 {
 	sub[node] = 1;
@@ -26,7 +26,7 @@ int dfs1(int node , int p)
 	
 	return sub[node];
 }
-
+// DFS FOR MOVING TOWARDS THE DENSE NODE AND EVENTUALLY FINDING THE CENTROID
 int dfs(int node , int p , int n)
 {
 	for(int adj : ar[node])
@@ -47,7 +47,11 @@ void decompose(int node , int p){
 	par[centroid] = p;
 	
 	for(int adj : ar[centroid])
-		ar[adj].erase(centroid) , decompose(adj , centroid);
+    {
+            ar[adj].erase(centroid);
+	    decompose(adj , centroid);
+    }
+		
 }
 
 //---------- decompose ends here -----------//
