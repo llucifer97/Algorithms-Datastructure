@@ -9,6 +9,7 @@ class Edge{
   int weight;
 };
 
+
 class Set{
 public:
     int rank;
@@ -16,13 +17,19 @@ public:
     
 };
 
-int find(Set *set,int i){
+Edge input[1000];
+Edge output[1000];
+Set set[1000];
+
+
+int find(Set set[],int i){
     if(set[i].parent != i) {
         set[i].parent = find(set,set[i].parent);
     } 
     return set[i].parent;
 }
-void Union(Set *set,int v1,int v2) {
+
+void Union(Set set[],int v1,int v2) {
     int v1_root = find(set,v1);
     int v2_root = find(set,v2);
     if(set[v1_root].rank > set[v2_root].rank){
@@ -39,10 +46,10 @@ bool cmp(Edge e1,Edge e2) {
     return e1.weight < e1.weight;
 }
 
-void Kruskals(Edge *input,int n,int e){
+void Kruskals(Edge input[],int n,int e){
     sort(input,input + e,cmp);
-    Edge *output = new Edge[n-1];
-    Set *set = new Set[n];
+    // Edge *output = new Edge[n-1];
+    // Set *set = new Set[n];
     for(int i =0;i<n;i++) {
         set[i].rank = 0;
         set[i].parent = i;
@@ -75,7 +82,6 @@ int main() {
 
 int n,e;
 cin >> n >> e;
-Edge *input = new Edge[e];
 for(int i =0;i<e;i++){
     int s,d ,w;
     cin >> s >> d >> w;
@@ -90,7 +96,7 @@ Kruskals(input,n,e);
 	
 	return 0;
 }
-
+/*
 7
 8
 0 3 4
@@ -101,3 +107,4 @@ Kruskals(input,n,e);
 4 5 4
 5 6 1
 4 6 3
+*/
