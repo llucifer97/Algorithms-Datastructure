@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+
 #include <iostream>
 #include <list>
 #define inf 1e9
@@ -7,12 +9,14 @@ using namespace std;
 class Graph{
 public:
 int v;
-list<pair<int,int>> *adj;
+vector<pair<int,int> > adj[1000];
+
+        bool visited[1000] ;
+        int parent[1000];
+        int weight[1000];
 
 Graph(int v) {
-    this->v = v;
-    adj = new list<pair<int,int>> [v];
-    
+    this->v = v;    
 }
 
 void addEdge(int u,int v,int w){
@@ -32,9 +36,7 @@ void addEdge(int u,int v,int w){
     }
 
     void Prims(){
-        bool *visited = new bool[v];
-        int *parent = new int[v];
-        int *weight = new int[v];
+      
         for(int i =0;i<v;i++){
             visited[i] = false;
             weight[i] = inf;
@@ -85,7 +87,7 @@ int main() {
 
 
 
-//
+/*
 7
 8
 0 3 4
@@ -98,8 +100,5 @@ int main() {
 4 6 3
 
 
-//
-
-
-
+*/
 
