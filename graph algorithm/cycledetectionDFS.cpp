@@ -77,3 +77,37 @@ else{
 
 return 0;
 }
+
+
+
+
+
+
+/////////////////////////////////////////STRIVER-CODE////////////////////////
+
+
+void dfs(int node,bool  vis[],bool rec[])
+{
+    if(!vis[node]==false)
+    {
+        vis[node] = true;
+        rec[node] = true;
+    
+
+        for(auto it : adj[node])
+        {
+            if(!vis[it] && dfs(it,vis,rec)) return true;
+            else if(rec[node] == true) return true;
+        }       
+    }
+
+    rec[node] = false;
+    return false;
+    
+}
+
+
+for(int i = 1;i<=N;i++)
+{
+    if(!vis[[i]]) dfs(i,vis,rec);
+}
