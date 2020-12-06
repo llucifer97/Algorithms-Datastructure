@@ -1,91 +1,108 @@
-//
-//  main.cpp
-//  practice
-//
-//  Created by Mahmud on 01/02/19.
-//  Copyright © 2018 Mahmud. All rights reserved.
-//
-
-/*
- LCA implementation with binary lifting
- - O(N * log(N)) preprocessing
- - O(log(N)) per query to find the LCA of two given nodes
- */
-
-#include <iostream>
-#include <vector>
+#include<bits/stdc++.h>
+#define REP(i,n) for (int i = 1; i <= n; i++)
+#define mod 1000000007
+#define pb push_back
+#define ff first
+#define ss second
+#define ii pair<int,int>
+#define vi vector<int>
+#define vii vector<ii>
+#define lli long long int
+#define INF 1000000000
+#define endl '\n'
+const double PI = 3.141592653589793238460;
+typedef std::complex<double> Complex;
+typedef std::valarray<Complex> CArray;
 
 using namespace std;
 
-const int MAX_SIZE = 1 << 10;
-const int MAX_LEVELS = 10;
+vector<int> ar[1001];
+const int maxN = 10;
+int level[1001] , LCA[1001][maxN+1];
 
-int N, Q;
-vector<vector<int>> graph;
 
-int depth[MAX_SIZE];
-int parents[MAX_SIZE][MAX_LEVELS];
-
-void dfs(int node, int parent) { // dfs to assign depths in the tree
-    parents[node][0] = parent;
-    for (int i: graph[node]) {
-        if (i != parent) {
-            depth[i] = depth[node] + 1;
-            dfs(i, node);
-        }
-    }
-}
-int lca(int u, int v) {
-    if (depth[u] < depth[v]) {
-        swap(u, v);
-    }
-    // traverse up the graph till the heit difference is not zero
-    for (int i = MAX_LEVELS - 1; i >= 0; i --) {
-        if (depth[u] >= depth[v] + (1 << i)) {
-            u = parents[u][i];
-        }
-    }
-    // if one of the node is part of query
-    if (u == v) {
-        return u;
-    }
-    // now both node r at same level and simultaneously traverse up the graph
-    for (int i = MAX_LEVELS - 1; i >= 0; i --) {
-        if (parents[u][i] != 0 && parents[u][i] != parents[v][i]) {
-            u = parents[u][i];
-            v = parents[v][i];
-        }
-    }
-    // return parent, u and v have same parent
-    return parents[u][0];
+void dfs(int node , int lvl , int par)
+{
+	level[node] = lvl;
+	LCA[node][0] = par;
+	
+	for(int child : ar[node])
+	if(child != par)
+	{
+		dfs(child , lvl+1 , node);
+	}
 }
 
-int main() {
-    cin >> N;
-    graph.resize(N + 1);
-    for (int i = 1; i < N; i ++) {
-        int u, v;
-        cin >> u >> v;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
-    }
-    // preprocessing
-    dfs(1, 0);
-    for (int i = 1; i < MAX_LEVELS; i ++) {
-        for (int j = 1; j <= N; j ++) {
-            if (parents[j][i - 1] != 0) {
-                parents[j][i] = parents[parents[j][i - 1]][i - 1];
-            }
-        }
-    }
-    cin >> Q;
-    for (int c = 0; c < Q; c ++) {
-        int u, v;
-        cin >> u >> v;
-        cout << "Case " << c + 1 << ": ";
-        cout << "LCA is: " << lca(u, v) << endl;
-    }
-    
-    return 0;
+
+void init(int n)
+{
+	dfs(1 , 0 , -1);
+	
+	for(int i=1;i<=maxN;i++)
+	{
+		for(int j=1;j<=n;j++)
+		if(LCA[j][i-1] != -1)
+		{
+			int par = LCA[j][i-1];
+			LCA[j][i] = LCA[par][i-1];
+		}
+	}
 }
 
+int getLCA(int a , int b)
+{
+	if(level[b] < level[a]) swap(a , b);
+	
+	int d = level[b] - level[a];
+	
+	while(d > 0)
+	{
+		int i = log2(d);
+		b = LCA[b][i];
+		
+		d -= 1 << i;
+	}
+	
+	if(a == b) return a;
+	
+	for(int i=maxN;i>=0;i--)
+	if(LCA[a][i] != -1 && (LCA[a][i] != LCA[b][i]))
+	{
+		a = LCA[a][i] , b = LCA[b][i];
+	}
+	
+	return LCA[a][0];
+}
+
+
+int getDist(int a , int b)
+{
+	int lca = getLCA(a , b);
+	return level[a] + level[b] - 2*level[lca];
+}
+
+int main()
+{
+	int n ,a , b , q;
+	
+	cin>>n;
+	
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=0;j<=maxN;j++)
+		LCA[i][j] = -1;
+	}
+	
+	for(int i=1;i<n;i++)
+	cin>>a>>b , ar[a].pb(b) , ar[b].push_back(a);
+	
+	init(n);
+	
+	cin>>q;
+	
+	while(q--)
+	{
+		cin>>a>>b;
+		cout<<getDist(a , b)<<endl;
+	}
+}
