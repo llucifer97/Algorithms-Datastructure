@@ -1,110 +1,70 @@
-//kruskal code
 #include <iostream>
+#include <vector>
+#include <utility>
 #include <algorithm>
+
 using namespace std;
-class Edge{
-  public: 
-  int src;
-  int dest;
-  int weight;
-};
+const int MAX = 1e4 + 5;
+int id[MAX], nodes, edges;
+pair <long long, pair<int, int> > p[MAX];
 
-
-class Set{
-public:
-    int rank;
-    int parent;
-    
-};
-
-Edge input[1000];
-Edge output[1000];
-Set set[1000];
-
-
-int find(Set set[],int i){
-    if(set[i].parent != i) {
-        set[i].parent = find(set,set[i].parent);
-    } 
-    return set[i].parent;
+void initialize()
+{
+    for(int i = 0;i < MAX;++i)
+        id[i] = i;
 }
 
-void Union(Set set[],int v1,int v2) {
-    int v1_root = find(set,v1);
-    int v2_root = find(set,v2);
-    if(set[v1_root].rank > set[v2_root].rank){
-        set[v1_root].parent = v2_root;
-    }else if(set[v1_root].rank < set[v2_root].rank) {
-        set[v2_root].parent = v1_root;
-    }else{
-        set[v2_root].parent = v1_root;
-        set[v1_root].rank++;
+int root(int x)
+{
+    while(id[x] != x)
+    {
+        id[x] = id[id[x]];
+        x = id[x];
     }
+    return x;
 }
 
-bool cmp(Edge e1,Edge e2) {
-    return e1.weight < e1.weight;
+void union1(int x, int y)
+{
+    int p = root(x);
+    int q = root(y);
+    id[p] = id[q];
 }
 
-void Kruskals(Edge input[],int n,int e){
-    sort(input,input + e,cmp);
-    // Edge *output = new Edge[n-1];
-    // Set *set = new Set[n];
-    for(int i =0;i<n;i++) {
-        set[i].rank = 0;
-        set[i].parent = i;
+long long kruskal(pair<long long, pair<int, int> > p[])
+{
+    int x, y;
+    long long cost, minimumCost = 0;
+    for(int i = 0;i < edges;++i)
+    {
+        // Selecting edges one by one in increasing order from the beginning
+        x = p[i].second.first;
+        y = p[i].second.second;
+        cost = p[i].first;
+        // Check if the selected edge is creating a cycle or not
+        if(root(x) != root(y))
+        {
+            minimumCost += cost;
+            union1(x, y);
+        }    
     }
-    int counter = 0,i =0;
-    while(counter<n-1) {
-        Edge currentEdge = input[i];
-        int sourceParent = find(set,currentEdge.src);
-        int destinationParent = find(set,currentEdge.dest);
-        if(sourceParent != destinationParent){
-            output[counter] = currentEdge;
-            Union(set,sourceParent,destinationParent);
-            counter++;
-        }
-        i++;
+    return minimumCost;
+}
+
+int main()
+{
+    int x, y;
+    long long weight, cost, minimumCost;
+    initialize();
+    cin >> nodes >> edges;
+    for(int i = 0;i < edges;++i)
+    {
+        cin >> x >> y >> weight;
+        p[i] = make_pair(weight, make_pair(x, y));
     }
-    for(int m = 0;m<n-1;m++){
-        cout << output[m].src << "--"<<output[m].dest << "with weight " << output[m].weight<<endl;  
-    }
+    // Sort the edges in the ascending order
+    sort(p, p + edges);
+    minimumCost = kruskal(p);
+    cout << minimumCost << endl;
+    return 0;
 }
-
-
-
-
-
-
-
-
-int main() {
-
-int n,e;
-cin >> n >> e;
-for(int i =0;i<e;i++){
-    int s,d ,w;
-    cin >> s >> d >> w;
-    input[i].src = s;
-    input[i].dest = d;
-    input[i].weight =w;
-}
-Kruskals(input,n,e);
-
-
-
-	
-	return 0;
-}
-/*
-7
-8
-0 3 4
-0 1 6
-1 2 5
-3 2 7
-3 4 2
-4 5 4
-5 6 1
-4 6 3
-*/
