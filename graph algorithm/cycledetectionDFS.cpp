@@ -97,7 +97,7 @@ void dfs(int node,bool  vis[],bool rec[])
         for(auto it : adj[node])
         {
             if(!vis[it] && dfs(it,vis,rec)) return true;
-            else if(rec[node] == true) return true;
+            else if(rec[it] == true) return true;
         }       
     }
 
