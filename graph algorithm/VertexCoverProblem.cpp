@@ -1,5 +1,6 @@
 // https://www.geeksforgeeks.org/finding-minimum-vertex-cover-graph-using-binary-search/
-
+// question : https://leetcode.com/problems/binary-tree-cameras/
+// cane be solved using 1> greedy 2> dp
 
 // A C++ program to find size of minimum vertex 
 // cover using Binary Search 
