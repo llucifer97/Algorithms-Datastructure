@@ -1,0 +1,110 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+
+#define block 555
+
+struct query
+{
+	ll l,r,i;
+};
+
+query Q[200001];
+ll ar[30001],ans[200001];
+ll fre[1000001];
+
+ll cnt=0;
+
+//sorting the query
+bool comp(query x,query y)
+{
+	if(x.l/block != y.l/block)
+	return x.l/block <y.l/block ;
+	
+	return x.r<y.r;
+}
+// adding freq
+void add(int pos)
+{
+	fre[ar[pos]]++;
+	if(fre[ar[pos]]==1)
+	cnt++;
+}
+// removing freq
+void remove(int pos)
+{
+	fre[ar[pos]]--;
+	if(fre[ar[pos]]==0)
+	cnt-=1;
+	
+}
+
+
+int main()
+{
+	ll n,q;
+    cin>>n;
+    for(int i=0;i<n;++i)
+    cin>>ar[i];
+    
+    cin>>q;
+    for(ll i=0;i<q;++i)
+    {
+    	cin>>Q[i].l>>Q[i].r;
+    	Q[i].i=i;
+    	Q[i].l-=1;
+    	Q[i].r-=1;
+    	
+    }
+    
+    sort(Q,Q+q,comp);
+    
+    ll l=0,r=-1;
+    
+    for(ll i=0;i<q;++i)
+    {
+    	ll L=Q[i].l;
+    	ll R=Q[i].r;
+    	
+    	while(l>L)
+    	{
+    		l--;
+    		add(l);
+    	}
+    	
+    	while(R>r)
+    	{
+    		r++;
+    		add(r);
+    	}
+    	
+    	while(l<L)
+    	{
+    		remove(l);
+    		l++;
+    			
+    	}
+    	
+    	while(r>R)
+    	{
+    		remove(r);
+    		r--;
+    		
+    	}
+    	ans[Q[i].i]=cnt;
+    }
+    
+    
+    for(ll i=0;i<q;++i)
+    {
+    	cout<<ans[i]<<endl;
+    }
+    
+    
+   return 0;
+   
+    
+    
+}
+
+// DQUERY
