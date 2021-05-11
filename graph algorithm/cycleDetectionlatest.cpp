@@ -9,22 +9,23 @@ bool rec[1000] = {false};
 
 
 
+
 bool isCycle(int node,int par)
 {
-	if(vis[node] == false)
-	{
-		vis[node] = true;
- 
-		for(auto it : adj[node])
-		{
-			if(vis[it] == true && it != par)return true;
-			if(!vis[it])isCycle(it,node);
-		}
+	vis[node] = 1;
 
-	}
-	return false;
+   for(int child : adj[node])
+   {
+      if(vis[child] == 0)
+      {
+         if(isCycle(child,node) == true)return true;
+      }
+      else{
+         if(child!= par)return true;
+      }
+   }
+   return false;
 }
-
 
 
 
