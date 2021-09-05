@@ -1,104 +1,66 @@
-#include <bits/stdc++.h>
-
-#include <iostream>
-#include <list>
-#define inf 1e9
+#include<bits/stdc++.h>
 using namespace std;
 
+int main(){
+	int N,m;
+	cin >> N >> m;
+	vector<pair<int,int> > adj[N]; 
 
-class Graph{
-public:
-int v;
-vector<pair<int,int> > adj[1000];
-
-        bool visited[1000] ;
-        int parent[1000];
-        int weight[1000];
-
-Graph(int v) {
-    this->v = v;    
-}
-
-void addEdge(int u,int v,int w){
-    adj[u].push_back(make_pair(v,w));
-    adj[v].push_back(make_pair(u,w));
-    
-}
-
-    int findMinVertex(int *weight,bool *visited,int v){
-        int minVertex = -1;
-        for(int i =0;i<v;i++){
-            if(!visited[i] and (minVertex == -1 or weight[i] < weight[minVertex])){
-                minVertex = i;
-            }
-        }
-        return minVertex;
-    }
-
-    void Prims(){
+	int a,b,wt;
+	for(int i = 0; i<m ; i++){
+		cin >> a >> b >> wt;
+		adj[a].push_back(make_pair(b,wt));
+		adj[b].push_back(make_pair(a,wt));
+	}	
+	
+	int parent[N]; 
       
-        for(int i =0;i<v;i++){
-            visited[i] = false;
-            weight[i] = inf;
-            
-        }
-        parent[0] = -1;
-        weight[0] = 0;
+    int key[N]; 
+      
+    bool mstSet[N]; 
+  
+    for (int i = 0; i < N; i++) 
+        key[i] = INT_MAX, mstSet[i] = false; 
+    
+    priority_queue< pair<int,int>, vector <pair<int,int>> , greater<pair<int,int>> > pq;
+
+    key[0] = 0; 
+    parent[0] = -1; 
+    pq.push({0, 0});
+    // Run the loop till all the nodes have been visited
+    // because in the brute code we checked for mstSet[node] == false while computing the minimum
+    // but here we simply take the minimal from the priority queue, so a lot of times a node might be taken twice
+    // hence its better to keep running till all the nodes have been taken. 
+    // try the following case: 
+    // Credits: Srejan Bera
+    // 6 7 
+    // 0 1 5 
+    // 0 2 10 
+    // 0 3 100 
+    // 1 3 50 
+    // 1 4 200
+    // 3 4 250
+    // 4 5 50 
+    while(!pq.empty())
+    { 
+        int u = pq.top().second; 
+        pq.pop(); 
         
-        for(int i =0;i<v;i++){
-            int minVertex = findMinVertex(weight,visited,v);
-            visited[minVertex] = true;
-            for(auto neighbour: adj[minVertex]) {
-                if(!visited[neighbour.first]) {
-                    if(weight[neighbour.first] > neighbour.second){
-                        parent[neighbour.first] = minVertex;
-                        weight[neighbour.first] = neighbour.second;
-                    }
-                }
+        mstSet[u] = true; 
+        
+        for (auto it : adj[u]) {
+            int v = it.first;
+            int weight = it.second;
+            if (mstSet[v] == false && weight < key[v]) {
+                parent[v] = u;
+		key[v] = weight; 
+                pq.push({key[v], v});    
             }
         }
-        for(int i = 1;i<v;i++){
-            cout << i << "--" << parent[i] << " with weight " << weight[i]<<endl;
-        }
-    }
+            
+    } 
     
-};
-
-
-
-
-
-
-int main() {
-	// your code goes here
-	int n,e;
-	cin >> n >> e;
-	Graph g(n);
-	for(int i =0;i<e;i++){
-	    int u,v,w;
-	    cin >> u >> v >>w;
-	    g.addEdge(u,v,w);
-	}
-	g.Prims();
-	
-	
+    for (int i = 1; i < N; i++) 
+        cout << parent[i] << " - " << i <<" \n"; 
 	return 0;
 }
-
-
-
-/*
-7
-8
-0 3 4
-0 1 6
-1 2 5
-3 2 7
-3 4 2
-4 5 4
-5 6 1
-4 6 3
-
-
-*/
-
