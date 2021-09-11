@@ -1,23 +1,20 @@
 
 
-int find(int input1[],int input2)
+int fun(int input1,string input2[])
 {
-	for (int i = 0; i < input2 - 1 ; i++ )
+	set<string> s;
+	for(int i = 0;i<input1;i++)
 	{
-		
-
-		bool flag1 = false,flag2 = false;
-
-		 if ( __gcd(input1[i],input1[i+1]) == 1)flag1 = true;
-
-		 if (input1[i] > input1[i+1]) flag2 = true;
-
-		 if(flag1 && flag2)
-		 {
-			 return i;
-		 }
-
-
+		string temp = "";
+		string str = input2[i];
+		for(auto j : str)
+		{
+			if(i%2 == 0)
+			{
+				temp += to_string(j);
+			}
+		}
+		s.insert(temp);
 	}
-return -1;
+	return s.size();
 }
