@@ -20,5 +20,5 @@ int find(int input1[],int input2)
 			return i;
 		}
 	}
-
+return -1;
 }
