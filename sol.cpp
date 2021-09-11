@@ -7,7 +7,7 @@ int fun(int input1,string input2[])
 	{
 		string temp = "";
 		string str = input2[i];
-		for(auto j : str)
+		for(int j =0;j<str.size();j++)
 		{
 			if(i%2 == 0)
 			{
