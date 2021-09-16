@@ -2,130 +2,68 @@
 // User Name: Qualcomm241743760563
 // Password: 9BtrYQqu
 
-
 #include<bits/stdc++.h>
 using namespace std;
 
+vector<string> vec;
 
-long CalculateCoeff(int n,int k) 
-    {
-        long res=1;
-        if(k>n-k)
-            k=n-k;                    
-        for(int i=0;i<k;i++)
-        {
-            res*=(n-i);
-            res/=(i+1);
-        }
-        return res;
-    }
-
-
-
-    int numTrees(int n) 
-    {
-        return CalculateCoeff(2*n,n)/(n+1)%100000007;
-    }
-
-    vector<int> numBST(vector<int> nodeValues) 
-    {
-        int n = nodeValues.size();
-        vector<int> result;
-        for(int i : nodeValues)
-        {
-           int ans =  numTrees(i);
-           result.push_back(ans);
-        }
-
-        return result;
-    }
-
-
-
-    int main()
-    {
-
-        
-        int n;
-        cin >> n;
-         vector<int> temp(n);
-
-        for(int i =0;i<n;i++) 
-        {
-            int x;
-            cin >> x;
-            temp[i] = x;
-           
-        }
-        
+void split(string str, char del){
+      string temp = "";
+   
+      for(int i=0; i<(int)str.size(); i++){
        
-
-
-        vector<int> a = numBST(temp);
-
-
-        for(auto i : a)
-        {
-            cout << i << "\n";
+         if(str[i] != del){
+            temp += str[i];
         }
+          else
+          {
+           vec.push_back(temp);
+              temp = "";
+        }
+    }
        
-    }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-vector<int> adj[100005];
-
-int visited[100005] = {0};
-
-
-
-
-void dfs(int node , priority_queue<int> q)
-{
-    if(visited[node] == 1)return;
-    visited[node] = 1;
-    q.push(node);
-    for(auto i : adj[node])
-    {
-        if(!visited[i])
-        {
-            dfs(i,q);
-        }
-    }
-
 }
 
 
 
 
-
-int countCompanies(int friend_nodes , vector<int> friend_from , vector<int> friend_to , vector<int> friends_weight )
+int main()
 {
-    for(int i =0;i<friend_nodes;i++)
+
+    string s;
+    cin >> s;
+    int n = s.size();
+      s += ",";
+    split(s,',');
+
+    string temp;
+
+    for(int i = 0;i<vec.size();i++)
     {
-        adj[friend_from[i]].push_back(friends_weight[i]);
-        adj[friend_to[i]].push_back(friend_from[i]);
-    }
-
-    int ans = INT_MIN;
-
-    for(int i =1;i<=friend_nodes;i++)
-    {
-        int temp = INT_MIN;
-         priority_queue<int> q;
-         
-
-        if(!visited[i])
+        
+        int x = stoi(vec[i]);
+        int mn = x , j = 1;
+       
+        while(mn < pow(10,x))
         {
-            dfs(i,q);
-            int m1 = q.top();
-            q.pop();
-            int m2 = q.top();
-            q.pop();
-            temp = max(temp,m1*m2);
+            if(x*j >= pow(10,x))
+            {
+                break;
+            }
+            mn = x*j;
+            cout << mn << "\n";
+            j++;
         }
-        ans = max(ans,temp);
+        
+        temp = temp + to_string(mn);
+        if(i<vec.size()-1) temp += ",";
+
+
     }
-    return ans;
+    
+    cout << temp;
+
+
+
+    return 0;
 }
