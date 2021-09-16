@@ -70,3 +70,62 @@ long CalculateCoeff(int n,int k)
         }
        
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+vector<int> adj[100005];
+
+int visited[100005] = {0};
+
+
+
+
+void dfs(int node , priority_queue<int> q)
+{
+    if(visited[node] == 1)return;
+    visited[node] = 1;
+    q.push(node);
+    for(auto i : adj[node])
+    {
+        if(!visited[i])
+        {
+            dfs(i,q);
+        }
+    }
+
+}
+
+
+
+
+
+int countCompanies(int friend_nodes , vector<int> friend_from , vector<int> friend_to , vector<int> friends_weight )
+{
+    for(int i =0;i<friend_nodes;i++)
+    {
+        adj[friend_from[i]].push_back(friends_weight[i]);
+        adj[friend_to[i]].push_back(friend_from[i]);
+    }
+
+    int ans = INT_MIN;
+
+    for(int i =1;i<=friend_nodes;i++)
+    {
+        int temp = INT_MIN;
+         priority_queue<int> q;
+         
+
+        if(!visited[i])
+        {
+            dfs(i,q);
+            int m1 = q.top();
+            q.pop();
+            int m2 = q.top();
+            q.pop();
+            temp = max(temp,m1*m2);
+        }
+        ans = max(ans,temp);
+    }
+    return ans;
+}
