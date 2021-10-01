@@ -24,6 +24,7 @@ void addEdge(int u,int v,int w){
     int findMinVertex(int *weight,bool *visited,int v){
         int minVertex = -1;
         for(int i =0;i<v;i++){
+		// -1 is for handling the very first comparision
             if(!visited[i] and (minVertex == -1 or weight[i] < weight[minVertex])){
                 minVertex = i;
             }
